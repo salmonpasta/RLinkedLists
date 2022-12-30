@@ -57,6 +57,9 @@ Queue <- R6Class("Queue",
                  getTail = function() {
                    return(private$tail)
                  },
+                 getHead = function() {
+                   return(private$head)
+                 },
                  private = list(
                    head = NULL,
                    tail = NULL,
