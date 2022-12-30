@@ -1,0 +1,5 @@
+q <- Queue$new(5)
+q$add(88)
+q$add(1)
+print(q$remove())
+print(q$isEmpty())
