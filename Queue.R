@@ -12,8 +12,8 @@ Queue <- R6Class("Queue",
                        private$tail <- private$head
                      } else {
                        tmp <- node$new(x)
-                       private$head$nxt <- tmp
-                       private$head <- tmp
+                       private$tail$nxt <- tmp
+                       private$tail <- tmp
                      }
                      private$length <- private$length + 1
                      invisible(self)
@@ -22,44 +22,47 @@ Queue <- R6Class("Queue",
                      if(is.null(private$head)){
                        self <- Q
                      } else {
-                       private$head$nxt <- Q$getTail()
-                       private$tail <- private$head
-                       tmp <- node$new(x)
-                       private$head$nxt <- tmp
-                       private$head <- tmp
+                       if(!Q$isEmpty()){
+                         temp <- Q$getHead()
+                         private$tail$nxt <- temp
+                         private$tail <- Q$getTail()
+                         }
                      }
-                     private$length <- private$length + 1
+                     private$length <- private$length + Q$getLength()
                      invisible(self)
-                   }
+                   },
                    remove = function() {
                      if (private$length == 0) return(NULL)
-                     # Can use private$tail for explicit access
-                     value <- private$tail$val
+                     # Can use private$headfor explicit access
+                     value <- private$head$val
                      if(identical(private$head,private$tail)){
                        private$head <- NULL
-                       private$tail <- NULL
+                       private$tail<- NULL
                      }else{
-                       private$tail <- private$tail$nxt
+                       private$head<- private$head$nxt
                      }
                      private$length <- private$length - 1
                      value
                    },
                    peek = function() {
                      if (private$length == 0) return(NULL)
-                     # Can use private$tail for explicit access
-                     value <- private$tail$val
+                     # Can use private$headfor explicit access
+                     value <- private$head$val
                      value
                    },
                    isEmpty = function() {
                      return(private$length == 0)
-                   }
-                 ),
-                 getTail = function() {
-                   return(private$tail)
-                 },
-                 getHead = function() {
-                   return(private$head)
-                 },
+                   },
+                   getTail= function() {
+                     return(private$tead)
+                   },
+                   getHead = function() {
+                     return(private$head)
+                   },
+                   getLength = function() {
+                     return(private$length)
+                   }),
+                 
                  private = list(
                    head = NULL,
                    tail = NULL,
