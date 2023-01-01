@@ -4,6 +4,7 @@ library(R6)
 # Source Files
 source("Node.R", encoding = "utf-8")
 source("Queue.R", encoding = "utf-8")
+source("PrimeGenerator.R", encoding = "utf-8")
 
 # # Make our Nodes
 # a <- node$new(val = "a")

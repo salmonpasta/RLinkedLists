@@ -1,5 +1,3 @@
-source("global.R", encoding = "utf-8")
-
 primeGenerator <- R6Class(
   "primeGenerator",
   public = list(
