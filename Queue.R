@@ -20,7 +20,8 @@ Queue <- R6Class("Queue",
                    },
                    addQueue = function(Q) {
                      if(is.null(private$head)){
-                       self <- Q
+                       private$head <- Q$getHead()
+                       private$tail <- Q$getTail()
                      } else {
                        if(!Q$isEmpty()){
                          temp <- Q$getHead()
@@ -50,11 +51,22 @@ Queue <- R6Class("Queue",
                      value <- private$head$val
                      value
                    },
+                   print = function() {
+                     toPrint <- "<head>"
+                     if(!is.null(private$head)){
+                       current.node <- private$head
+                       while(!is.null(current.node)){
+                         toPrint <- paste(toPrint, current.node$val)
+                         current.node <- current.node$nxt
+                       }
+                     }
+                     return(paste(toPrint, "<tail>"))
+                   },
                    isEmpty = function() {
                      return(private$length == 0)
                    },
                    getTail= function() {
-                     return(private$tead)
+                     return(private$tail)
                    },
                    getHead = function() {
                      return(private$head)
