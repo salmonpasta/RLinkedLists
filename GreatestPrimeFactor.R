@@ -29,7 +29,7 @@ while(rem!=1 && N!=1) {
   }
 }
 
-pG$printPrimes()
+# pG$printPrimes()
 prime.factors$print()
 
 print(paste("The largest prime factor is: ", current.prime))

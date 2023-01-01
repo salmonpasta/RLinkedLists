@@ -8,19 +8,19 @@ primeGenerator <- R6Class(
     addPrime = function(){
       candidate <- private$primes$getTail()
       candidate <- candidate$val + 1
-      print(candidate)
+      # print(candidate)
       while(!(private$isPrime(candidate))){
         candidate = candidate + 1
-        print(candidate)
+        # print(candidate)
       }
       private$primes$add(candidate)
     },
     selectPrime = function(){
       if(private$primes$getLength()==1){
-        print("flag")
+        # print("flag")
         self$addPrime()
       }
-      print("flag sP")
+      # print("flag sP")
       temp <- private$primes$remove()
       private$primesDump$add(temp)
       temp
